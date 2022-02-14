@@ -7,3 +7,7 @@ class LineItem:
     @property
     def total(self):
         return Decimal(0.00)
+
+    @property
+    def quantity(self):
+        return 0
