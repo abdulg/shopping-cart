@@ -15,6 +15,7 @@ class TestCart:
         cart= Cart(0)
         cart.add(item, 1)
         assert cart.line_items == 1
+        assert cart.num_items('Dove Soap') == 1
         assert cart.total == 39.99
 
     def test_cart__ac1__total_for_multiple_items_should_be_that_items_value_multiplied_by_quantity(self):
