@@ -20,4 +20,12 @@ class TestLineItem:
         line_item = LineItem(item, 0)
         line_item.add(1)
         assert line_item.quantity == 1
-        assert line_item.total == item.value
+        assert line_item.total == 39.99
+
+    def test_line_item__add_multiple_items_should_total_value_of_all_items(self):
+        item = Item('Dove Soap', 39.99)
+        line_item = LineItem(item, 0)
+        line_item.add(1)
+        line_item.add(2)
+        assert line_item.quantity == 3
+        assert line_item.total == 119.97
