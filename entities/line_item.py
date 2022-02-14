@@ -20,5 +20,9 @@ class LineItem:
     def quantity(self):
         return self._quantity
 
+    @property
+    def value(self):
+        return self._item.value
+
     def add(self, quantity):
         self._quantity += quantity
