@@ -16,5 +16,5 @@ class LineItem:
     def quantity(self):
         return self._quantity
 
-    def add(self, item):
-        self._quantity += 1
+    def add(self, quantity):
+        self._quantity += quantity
