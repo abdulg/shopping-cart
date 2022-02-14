@@ -4,14 +4,12 @@ from decimal import *
 
 
 class LineItem:
-    def __init__(self):
-        self._item = None
-        self._quantity = 0
+    def __init__(self, item, quantity):
+        self._item = item
+        self._quantity = quantity
 
     @property
     def total(self):
-        if self._item is None:
-            return Decimal('0.00')
         return float((Decimal(self._quantity) * Decimal(self._item.value)).quantize(Decimal('0.01')))
 
     @property
@@ -19,5 +17,4 @@ class LineItem:
         return self._quantity
 
     def add(self, item):
-        self._item = item
         self._quantity += 1
