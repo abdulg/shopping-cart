@@ -20,6 +20,11 @@ class Cart:
     def line_items(self):
         return len(self._line_items)
 
+    def num_items(self, name):
+        if name in self._line_items:
+            return self._line_items[name].quantity
+        return 0
+
     @property
     def tax(self):
         subtotal = sum([line_item.total_in_cents for line_item in self._line_items.values()])

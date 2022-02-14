@@ -8,6 +8,7 @@ class TestCart:
     def test_cart__total_of_empty_cart_should_be_0_00(self):
         cart = Cart(0)
         assert cart.total == 0.00
+        assert cart.num_items('Axe Deo') == 0
 
     def test_cart__ac0__total_for_single_item_should_be_that_items_value(self):
         item = Item('Dove Soap', 39.99)
@@ -22,6 +23,7 @@ class TestCart:
         cart.add(item, 5)
         cart.add(item, 3)
         assert cart.line_items == 1
+        assert cart.num_items('Dove Soap') == 8
         assert cart.total == 319.92
 
     def test_cart__ac2__total_for_multiple_items_should_be_that_items_value_multiplied_by_quantity_plus_tax(self):
