@@ -26,6 +26,7 @@ class TestCart:
         cart.add(item, 3)
         assert cart.line_items == 1
         assert cart.num_items('Dove Soap') == 8
+        assert cart.item_value('Dove Soap') == 39.99
         assert cart.total == 319.92
 
     def test_cart__ac2__total_for_multiple_items_should_be_that_items_value_multiplied_by_quantity_plus_tax(self):
