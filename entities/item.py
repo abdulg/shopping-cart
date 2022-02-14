@@ -6,7 +6,7 @@ from decimal import *
 class Item:
     def __init__(self, name, value):
         self._name = name
-        self._value = Decimal(value)
+        self._value = value
 
     @property
     def name(self):
@@ -14,4 +14,4 @@ class Item:
 
     @property
     def value(self):
-        return self._value
+        return float(Decimal(self._value).quantize(Decimal('0.01')))

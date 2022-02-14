@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from entities.item import Item
+from decimal import *
 
 
 class TestItem:
