@@ -6,7 +6,7 @@ from decimal import *
 class Item:
     def __init__(self, name, value):
         self._name = name
-        self._value = value
+        self._value = int(value * 100)
 
     @property
     def name(self):
@@ -14,4 +14,8 @@ class Item:
 
     @property
     def value(self):
-        return float(Decimal(self._value).quantize(Decimal('0.01')))
+        return float(self._value) / 100.0
+
+    @property
+    def value_in_cents(self):
+        return self._value

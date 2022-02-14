@@ -10,7 +10,11 @@ class LineItem:
 
     @property
     def total(self):
-        return float((Decimal(self._quantity) * Decimal(self._item.value)).quantize(Decimal('0.01')))
+        return float(self._quantity * self._item.value_in_cents / 100.0)
+
+    @property
+    def total_in_cents(self):
+        return self._quantity * self._item.value_in_cents
 
     @property
     def quantity(self):
