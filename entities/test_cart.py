@@ -33,6 +33,8 @@ class TestCart:
         cart.add(soap, 2)
         cart.add(deo, 2)
         assert cart.line_items == 2
+        assert cart.num_items('Dove Soap') == 2
+        assert cart.num_items('Axe Deo') == 2
         assert cart.tax == 35.00
         assert cart.total == 314.96
 
