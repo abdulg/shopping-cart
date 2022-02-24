@@ -26,3 +26,9 @@ class LineItem:
 
     def add(self, quantity):
         self._quantity += quantity
+
+    def remove(self, quantity):
+        if quantity > self._quantity:
+            self._quantity = 0
+        else:
+            self._quantity -= quantity

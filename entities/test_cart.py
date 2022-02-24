@@ -42,3 +42,47 @@ class TestCart:
         assert cart.item_value('Axe Deo') == 99.99
         assert cart.tax == 35.00
         assert cart.total == 314.96
+
+    def test_cart__ac3__remove_soap_there_should_be_three_soaps_in_cart(self):
+        soap = Item('Dove Soap', 39.99)
+        deo = Item('Axe Deo', 99.99)
+        cart = Cart(12.5)
+        cart.add(soap, 4)
+        cart.add(deo, 2)
+        assert cart.line_items == 2
+        assert cart.num_items('Dove Soap') == 4
+        assert cart.item_value('Dove Soap') == 39.99
+        assert cart.num_items('Axe Deo') == 2
+        assert cart.item_value('Axe Deo') == 99.99
+        cart.remove(soap, 1)
+        assert cart.num_items('Dove Soap') == 3
+        assert cart.tax == 39.99
+        assert cart.total == 359.94
+
+    # prep
+    # def test_cart__ac4a__total_price_discount_for_total_greater_than_1000_tax_inclusive_should_be_10_percent(self):
+    #     deo = Item('Axe Deo', 99.99)
+    #     cart = Cart(12.5)
+    #     cart.add(deo, 10)
+    #     assert cart.item_value('Axe Deo') == 99.99
+    #     assert cart.tax == 124.99
+    #     assert cart.discount == 1012.40
+    #     assert cart.total == 1012.40  # 1124.89 - 112.49
+    #
+    # def test_cart__ac4a__total_price_discount_for_total_under_1000_tax_inclusive_should_be_zero(self):
+    #     deo = Item('Axe Deo', 99.99)
+    #     cart = Cart(12.5)
+    #     cart.add(deo, 5)
+    #     assert cart.item_value('Axe Deo') == 99.99
+    #     assert cart.tax == 62.49
+    #     assert cart.discount == 0.00
+    #     assert cart.total == 562.44
+    #
+    # def test_cart__ac4b__total_price_discount_should_be_calculated_after_multi_buy(self):
+    #     deo = Item('Axe Deo', 99.99)
+    #     cart = Cart(12.5)
+    #     cart.add(deo, 10)
+    #     assert cart.item_value('Axe Deo') == 99.99
+    #     assert cart.tax == 124.99
+    #     assert cart.discount == 1012.40
+    #     assert cart.total == 1012.40  # 1124.89 - 112.49

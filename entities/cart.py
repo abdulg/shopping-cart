@@ -42,3 +42,8 @@ class Cart:
     def add(self, item, quantity):
         line_item = self._line_items.setdefault(item.name, LineItem(item, 0))
         line_item.add(quantity)
+
+    def remove(self, item, quantity):
+        if item.name in self._line_items:
+            line_item = self._line_items[item.name]
+            line_item.remove(quantity)
