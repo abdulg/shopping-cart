@@ -4,17 +4,27 @@ from decimal import *
 
 
 class LineItem:
-    def __init__(self, item, quantity):
+    def __init__(self, item, quantity, multi_discount=False):
         self._item = item
         self._quantity = int(quantity)
+        self._multi_discount = multi_discount
+        self._discount = Decimal('0.00')
 
     @property
     def total(self):
-        return float(self._quantity * self._item.value_in_decimal)
+        return float((self._quantity - self._num_discounted_items) * self._item.value_in_decimal)
 
     @property
     def total_in_decimal(self):
-        return self._quantity * self._item.value_in_decimal
+        return (self._quantity - self._num_discounted_items) * self._item.value_in_decimal
+
+    @property
+    def discount(self):
+        return float(self._num_discounted_items * self._item.value_in_decimal)
+
+    @property
+    def discount_in_decimal(self):
+        return self._num_discounted_items * self._item.value_in_decimal
 
     @property
     def quantity(self):
@@ -23,6 +33,12 @@ class LineItem:
     @property
     def value(self):
         return self._item.value
+
+    @property
+    def _num_discounted_items(self):
+        if self._multi_discount is True:
+            return self._quantity // 3
+        return 0
 
     def add(self, quantity):
         self._quantity += quantity
