@@ -13,7 +13,7 @@ class Cart:
     @property
     def total(self):
         total = sum([line_item.total_in_decimal for line_item in self._line_items.values()])
-        tax = self.tax_in_decimal
+        tax = self._tax_in_decimal
         return float(Decimal(total + tax).quantize(Decimal('0.01')))
 
     @property
@@ -32,10 +32,10 @@ class Cart:
 
     @property
     def tax(self):
-        return float(self.tax_in_decimal.quantize(Decimal('1.00')))
+        return float(self._tax_in_decimal.quantize(Decimal('1.00')))
 
     @property
-    def tax_in_decimal(self):
+    def _tax_in_decimal(self):
         subtotal = sum([line_item.total_in_decimal for line_item in self._line_items.values()])
         return subtotal * self._tax_rate / Decimal('100.0')
 
