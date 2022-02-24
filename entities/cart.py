@@ -14,7 +14,7 @@ class Cart:
     def total(self):
         total = sum([line_item.total_in_decimal for line_item in self._line_items.values()])
         tax = self._tax_in_decimal
-        return float(Decimal(total + tax).quantize(Decimal('0.01')))
+        return float(Decimal(total + tax).quantize(Decimal('1.00')))
 
     @property
     def line_items(self):

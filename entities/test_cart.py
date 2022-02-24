@@ -81,6 +81,17 @@ class TestCart:
         assert cart.tax == 47.49
         assert cart.total == 427.44
 
+    def test_cart__ac3c__six_multi_discount_items_should_triger_two_discounted_items(self):
+        soap = Item('Dove Soap', 39.99, True)
+        cart = Cart(12.5)
+        cart.add(soap, 6)
+        assert cart.line_items == 1
+        assert cart.num_items('Dove Soap') == 6
+        assert cart.item_value('Dove Soap') == 39.99
+        assert cart.discount == 89.98
+        assert cart.tax == 20.00
+        assert cart.total == 179.95
+
     # prep
     # def test_cart__ac4a__total_price_discount_for_total_greater_than_1000_tax_inclusive_should_be_10_percent(self):
     #     deo = Item('Axe Deo', 99.99)
