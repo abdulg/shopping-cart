@@ -6,15 +6,15 @@ from decimal import *
 class LineItem:
     def __init__(self, item, quantity):
         self._item = item
-        self._quantity = quantity
+        self._quantity = int(quantity)
 
     @property
     def total(self):
-        return float(self._quantity * self._item.value_in_cents / 100.0)
+        return float(self._quantity * self._item.value_in_decimal)
 
     @property
-    def total_in_cents(self):
-        return self._quantity * self._item.value_in_cents
+    def total_in_decimal(self):
+        return self._quantity * self._item.value_in_decimal
 
     @property
     def quantity(self):
