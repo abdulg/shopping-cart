@@ -4,10 +4,10 @@ from decimal import *
 
 
 class LineItem:
-    def __init__(self, item, quantity, multi_discount=False):
+    def __init__(self, item, quantity):
         self._item = item
         self._quantity = int(quantity)
-        self._multi_discount = multi_discount
+        self._multi_discount = item.multi_discount
         self._discount = Decimal('0.00')
 
     @property
